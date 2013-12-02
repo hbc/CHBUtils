@@ -1,6 +1,5 @@
 mds = function(counts, condition) {
     require(ggplot2)
-    require(gridExtra)
     nprobes = nrow(counts)
     nsamples = ncol(counts)
     distances = dist(t(counts))
@@ -9,16 +8,21 @@ mds = function(counts, condition) {
     df = as.data.frame(fit$points)
     df$label = rownames(df)
     df$condition = condition
-    p1 = ggplot(df, aes(one, two, color=condition)) +
+    p = ggplot(df, aes(one, two, color=condition)) +
         geom_point() +
         theme(text=element_text(family="Gill Sans"))
+    return(p)
+}
 
+variance_by_component = function(counts) {
+    nsamples = ncol(counts)
+    distances = dist(t(counts))
+    fit = cmdscale(distances, eig=TRUE, k=6)
     eigs = data.frame(variance_explained=fit$eig / sum(fit$eig))
     eigs$component = factor(rownames(eigs), levels=rownames(eigs))
-    quartz()
-    p2 = ggplot(eigs, aes(component, variance_explained)) + geom_point() +
-        theme(text=element_text(family="Gill Sans")) +
-            ylab("Proportion of variance explained") +
-            xlab("Principal component")     
-    grid.arrange(p1, p2)
+    p = ggplot(eigs, aes(component, variance_explained)) + geom_point() +
+         theme(text=element_text(family="Gill Sans")) +
+            ylab("variance explained") +
+            xlab("principal component")
+    return(p)
 }

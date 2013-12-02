@@ -1,6 +1,5 @@
 fix_excel_symbols = function(symbols) {
     return(unlist(lapply(as.character(symbols), fix_string)))
-#    return(strapply(symbols, regex_str, fix_string, simplify=TRUE))
 }
 
 fix_string = function(x) {
@@ -12,5 +11,3 @@ date_fixer = function(x) {
     tokens = str_split(x, "-")
     return(paste(toupper(tokens[[1]][2]), tokens[[1]][1], sep=""))
 }
-
-   

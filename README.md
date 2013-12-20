@@ -1,4 +1,4 @@
-chb_utils
+CHBUtils
 =========
 
 Utility functions in R

@@ -8,8 +8,7 @@ ggROC = function(df, facetName, groupName = "grp", predName = "res") {
   plotdata$specificities = 1 - plotdata$specificities
   colnames(plotdata) = c(facetName, "tpr", "fpr")
   p = ggplot(plotdata, aes(fpr, tpr)) + 
-      geom_line(aes_string(colour=facetName)) +
-      theme(text=element_text(family="Gill Sans"))
+      geom_line(aes_string(colour=facetName))
   return(p)
 }
 

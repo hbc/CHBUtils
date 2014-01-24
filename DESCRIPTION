@@ -9,6 +9,6 @@ Authors@R: c(person("Rory", "Kirchner", email="rory.kirchner@gmail.com",
                     role = c("aut")),
              person("Brad", "Chapman", email="chapmanb@50mail.com",
                     role = c("aut")))
-Depends: R (>= 3.0.2)
+Depends: R (>= 3.0.0)
 License: "MIT"
 LazyData: true

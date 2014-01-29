@@ -1,7 +1,9 @@
 Package: CHBUtils
 Title: "Useful utility functions used at the core"
+Description: "Useful utility functions used at the core"
 Version: 0.1
 Authors@R: c(person("Rory", "Kirchner", email="rory.kirchner@gmail.com",
+<<<<<<< HEAD
     role = c("aut", "cre", "ths")),
     person("John", "Hutchinson", email="jnhutchinson@gmail.com",
     role = c("aut")),
@@ -11,5 +13,15 @@ Authors@R: c(person("Rory", "Kirchner", email="rory.kirchner@gmail.com",
     role = c("aut")))
 Depends:
     R (>= 3.0.2)
+=======
+                    role = c("aut", "cre", "ths")),
+             person("John", "Hutchinson", email="jnhutchinson@gmail.com",
+                    role = c("aut")),
+             person("Oliver", "Hofmann", email="ohofmann@hsph.harvard.edu",
+                    role = c("aut")),
+             person("Brad", "Chapman", email="chapmanb@50mail.com",
+                    role = c("aut")))
+Depends: R (>= 3.0.0)
+>>>>>>> 6054e939c70bb47c990679cedee419637560973e
 License: "MIT"
 LazyData: true

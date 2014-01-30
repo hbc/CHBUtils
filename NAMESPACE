@@ -1,3 +1,2 @@
 export(boxplotoutliers)
 export(nuseoutliers)
-export(rleoutliers)

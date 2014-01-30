@@ -1,3 +1,4 @@
+##comment
 PCAplot.eset <- function(eset=NULL, categories=NULL, title=NULL, colorpalette=NULL, alpha=1, numcomponents=4){
   alpha <- sprintf("%x", ceiling(alpha*255))
   colorpalette <- paste(colorpalette, alpha, sep="")

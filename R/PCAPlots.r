@@ -1,4 +1,3 @@
-##comment
 PCAplot.eset <- function(eset=NULL, categories=NULL, title=NULL, colorpalette=NULL, alpha=1, numcomponents=4){
   alpha <- sprintf("%x", ceiling(alpha*255))
   colorpalette <- paste(colorpalette, alpha, sep="")
@@ -11,6 +10,7 @@ PCAplot.eset <- function(eset=NULL, categories=NULL, title=NULL, colorpalette=NU
   pairs(tmpPCAData.core, bg=colors, col="#606060", cex=2, pch=21, main=title, oma=c(8,5,5,14))
   legend("right", cex=0.7, col="#606060", pt.bg=legend_values[,1], pt.cex=1.5, legend=legend_values[,2],  pch=21, bty="n", x.intersp=1)
 }
+
 ####################################
 PCAplot.df <- function(df=NULL, meta.df=NULL, categories=NULL, title=NULL, colorpalette=NULL, alpha=1, numcomponents=6){
   alpha <- sprintf("%x", ceiling(alpha*255))

@@ -1,8 +1,8 @@
-\name{nuseoutliers}
-\alias{nuseoutliers}
-\title{Cel file IDs of intensity NUSE outlier arrays (in characters).}
+\name{rleoutliers}
+\alias{rleoutliers}
+\title{Cel file IDs of intensity RLE outlier arrays (in characters).}
 \usage{
-  nuseoutliers(eset = NULL, logtransform = TRUE)
+  rleoutliers(eset = NULL, logtransform = TRUE)
 }
 \arguments{
   \item{eset}{AffyBatch}
@@ -15,11 +15,11 @@
   outliers for intensity boxplots.
 }
 \description{
-  Cel file IDs of intensity NUSE outlier arrays (in
+  Cel file IDs of intensity RLE outlier arrays (in
   characters).
 }
 \examples{
-nuseoutliers(eset=AffyRaw, logtranform=TRUE)
+rleoutliers(eset=AffyRaw, logtranform=TRUE)
 }
 \seealso{
   \code{\link{arrayQualityMetrics}} which this function

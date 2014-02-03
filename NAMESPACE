@@ -1,4 +1,7 @@
 export(boxplotoutliers)
 export(nuseoutliers)
+<<<<<<< HEAD
 export(PCAplot.eset)
 export(rleoutliers)
+=======
+>>>>>>> 078d3a046920bef088c6ea4fde4a8463cc7a848f

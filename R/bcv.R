@@ -31,6 +31,5 @@ bcv = function(y) {
            p = p + geom_line(data=df, aes(A, sqrt(trended.dispersion)), color="blue")
 }
         p + xlab("average log CPM") +
-            ylab("biological coefficient of variation") +
-            theme(text=element_text(family="Gill Sans"))
+            ylab("biological coefficient of variation")
 }

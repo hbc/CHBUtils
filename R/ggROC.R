@@ -12,3 +12,26 @@ ggROC = function(df, facetName, groupName = "grp", predName = "res") {
   return(p)
 }
 
+jaccard = function(df, column, cutoff=0.05) {
+    algorithms = unique(df$algorithm)
+    sig = list()
+    for(alg in algorithms) {
+        sig[alg] = list(subset(df, algorithm == alg & df[,column] < cutoff)$id)
+    }
+    ji = list()
+    for(alg in algorithms) {
+        for(alg2 in algorithms) {
+            if (alg == alg2) next
+            algs = sort(c(alg, alg2))
+            alg1 = algs[1]
+            alg2 = algs[2]
+            comparison = paste(alg1, "_vs_", alg2, sep="")
+            alg_intersection = intersect(sig[alg1][[1]], sig[alg2][[1]])
+            alg_union = union(sig[alg1][[1]], sig[alg2][[1]])
+            ji[comparison] = length(alg_intersection) / length(alg_union)
+        }
+    }
+    return(data.frame(ji))
+}
+
+ji = jaccard(df, "padj")

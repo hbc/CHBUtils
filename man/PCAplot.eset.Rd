@@ -10,7 +10,12 @@
   \item{eset}{ExpressionSet, required}
 
   \item{categories}{character vector column identifier
-  containing different categories to highlight, required}
+  containing different categories to highlight with colors,
+  required}
+
+  \item{secondary_categories}{character vector column
+  identifier containing different categories to highlight
+  by shape, optional}
 
   \item{title}{title for the plot, required}
 

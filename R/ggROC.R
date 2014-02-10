@@ -11,4 +11,3 @@ ggROC = function(df, facetName, groupName = "grp", predName = "res") {
       geom_line(aes_string(colour=facetName))
   return(p)
 }
-

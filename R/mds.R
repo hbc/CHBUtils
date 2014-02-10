@@ -9,8 +9,7 @@ mds = function(counts, condition) {
     df$label = rownames(df)
     df$condition = condition
     p = ggplot(df, aes(one, two, color=condition)) +
-        geom_point() +
-        theme(text=element_text(family="Gill Sans"))
+        geom_point()
     return(p)
 }
 
@@ -21,7 +20,6 @@ variance_by_component = function(counts) {
     eigs = data.frame(variance_explained=fit$eig / sum(fit$eig))
     eigs$component = factor(rownames(eigs), levels=rownames(eigs))
     p = ggplot(eigs, aes(component, variance_explained)) + geom_point() +
-         theme(text=element_text(family="Gill Sans")) +
             ylab("variance explained") +
             xlab("principal component")
     return(p)

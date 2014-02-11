@@ -2,12 +2,9 @@ export(boxplotoutliers)
 export(nuseoutliers)
 export(PCAplot.eset)
 export(rleoutliers)
-<<<<<<< HEAD
-=======
 export(bcv)
 export(mds)
 export(qqplot2)
 export(ggROC)
 export(base_name)
 export(variance_by_component)
->>>>>>> e855d0cd8564d7c3117348fa498001fd2cb2b323

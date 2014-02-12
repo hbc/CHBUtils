@@ -16,23 +16,3 @@ Depends:
     R (>= 3.0.0)
 License: "MIT"
 LazyData: true
-Collate:
-    'asnum.r'
-    'base_name.R'
-    'bcv.R'
-    'boxplotoutliers.R'
-    'chb_utils-package.r'
-    'col2rownames.r'
-    'fix_excel_symbols.R'
-    'ggROC.R'
-    'install_packages.R'
-    'mds.R'
-    'nuseoutliers.R'
-    'PCAplot.eset.R'
-    'PCAPlots.r'
-    'plot_dendro.R'
-    'qqplot_JH.r'
-    'qqplot2.R'
-    'rleoutliers.R'
-    'row2colnames.r'
-    'vis.gene.reads.cov.r'

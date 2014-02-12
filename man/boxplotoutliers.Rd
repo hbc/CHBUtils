@@ -2,7 +2,7 @@
 \alias{boxplotoutliers}
 \title{Cel file IDs of intensity boxplot outlier arrays (in characters).}
 \usage{
-  boxplotoutliers(eset = NULL, logtransform = TRUE)
+boxplotoutliers(eset = NULL, logtransform = TRUE)
 }
 \arguments{
   \item{eset}{GeneFeatureSetm, AffyBatch or ExpressionSet
@@ -12,18 +12,18 @@
   processing?}
 }
 \value{
-  character vector of arrays (CEL file IDs) that are
-  outliers for intensity boxplots.
+character vector of arrays (CEL file IDs) that are outliers
+for intensity boxplots.
 }
 \description{
-  Cel file IDs of intensity boxplot outlier arrays (in
-  characters).
+Cel file IDs of intensity boxplot outlier arrays (in
+characters).
 }
 \examples{
 boxplotoutliers(eset=AffyRaw, logtransform=TRUE)s
 }
 \seealso{
-  \code{\link{arrayQualityMetrics}} which this function
-  subsets
+\code{\link{arrayQualityMetrics}} which this function
+subsets
 }
 

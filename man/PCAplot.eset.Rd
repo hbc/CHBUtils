@@ -1,10 +1,9 @@
 \name{PCAplot.eset}
 \alias{PCAplot.eset}
-\title{Cel file IDs of intensity NUSE outlier arrays (in characters).}
+\title{Pairwise Principal Component Analysis Plots}
 \usage{
-  PCAplot.eset(eset = NULL, categories = NULL,
-    title = NULL, colorpalette = NULL, alpha = 1,
-    numcomponents = 4)
+PCAplot.eset(eset = NULL, categories = NULL, title = NULL,
+  colorpalette = NULL, alpha = 1, numcomponents = 4)
 }
 \arguments{
   \item{eset}{ExpressionSet, required}
@@ -29,17 +28,16 @@
   plot, defaults to 4}
 }
 \value{
-  pairwise plots of samples plotted by principal component
+pairwise plots of samples plotted by principal component
 }
 \description{
-  Cel file IDs of intensity NUSE outlier arrays (in
-  characters).
+Pairwise Principal Component Analysis Plots
 }
 \examples{
-PCAplot.eset <- function(eset=AffyNorm, categories="groups", title="PCAplot - groups", colorpalette=c("#FF0000", "#00FF00", "#0000FF", alpha=0.8, numcomponents=4){
+PCAplot.eset(eset=AffyNorm, categories="groups", title="PCAplot - groups", colorpalette=c("#FF0000", "#00FF00", "#0000FF", alpha=0.8, numcomponents=4)
 }
 \seealso{
-  \code{\link{pair}} which this function uses to plot all
-  pairwise combos
+\code{\link{pair}} which this function uses to plot all
+pairwise combos
 }
 

@@ -2,7 +2,7 @@
 \alias{nuseoutliers}
 \title{Cel file IDs of intensity NUSE outlier arrays (in characters).}
 \usage{
-  nuseoutliers(eset = NULL, logtransform = TRUE)
+nuseoutliers(eset = NULL, logtransform = TRUE)
 }
 \arguments{
   \item{eset}{AffyBatch}
@@ -11,18 +11,18 @@
   processing?}
 }
 \value{
-  character vector of arrays (CEL file IDs) that are
-  outliers for intensity boxplots.
+character vector of arrays (CEL file IDs) that are outliers
+for intensity boxplots.
 }
 \description{
-  Cel file IDs of intensity NUSE outlier arrays (in
-  characters).
+Cel file IDs of intensity NUSE outlier arrays (in
+characters).
 }
 \examples{
 nuseoutliers(eset=AffyRaw, logtranform=TRUE)
 }
 \seealso{
-  \code{\link{arrayQualityMetrics}} which this function
-  subsets
+\code{\link{arrayQualityMetrics}} which this function
+subsets
 }
 

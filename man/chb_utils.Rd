@@ -4,6 +4,6 @@
 \alias{chb_utils-package}
 \title{chb_utils}
 \description{
-  chb_utils
+chb_utils
 }
 

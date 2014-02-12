@@ -1,4 +1,4 @@
-#' Cel file IDs of intensity NUSE outlier arrays (in characters).
+#' Pairwise Principal Component Analysis Plots
 #'
 #' @param eset ExpressionSet, required
 #' @param categories character vector column identifier containing different categories to highlight with colors, required
@@ -11,7 +11,7 @@
 #' @seealso \code{\link{pair}} which this function uses to plot all pairwise combos
 #' @export
 #' @examples
-#' PCAplot.eset <- function(eset=AffyNorm, categories="groups", title="PCAplot - groups", colorpalette=c("#FF0000", "#00FF00", "#0000FF", alpha=0.8, numcomponents=4)
+#' PCAplot.eset(eset=AffyNorm, categories="groups", title="PCAplot - groups", colorpalette=c("#FF0000", "#00FF00", "#0000FF", alpha=0.8, numcomponents=4)
   
 
 PCAplot.eset <- function(eset=NULL, categories=NULL, secondary_categories=NULL, title=NULL, colorpalette=NULL, alpha=1, numcomponents=4){

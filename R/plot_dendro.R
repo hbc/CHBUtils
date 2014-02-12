@@ -1,5 +1,15 @@
-####################################
-# x = ExpressionSet
+#' ggplot based dendrogram plot 
+#'
+#' @param x ExpressionSet, required
+#' @param title, character vector with title of the plot, optional
+#' @param labels.colname character vector of length one with column id of categorical labels, required
+#' @param colors.colname character vector of length one with column id of categorical colors, required
+#' @return dendrogram plot with categorical labels and colors
+#' @seealso \code{\link{ggdendro}} which this function modifies
+#' @export
+#' @examples
+#' plot_dendro <- function(eset, title="mydendrogram", labels.colname="age", colors.colname="genotype")
+
 plot_dendro <- function(x, title="", labels.colname=NULL, colors.colname=NULL) {
   require(ggdendro)
   meta.x <- pData(x)
@@ -13,7 +23,7 @@ plot_dendro <- function(x, title="", labels.colname=NULL, colors.colname=NULL) {
   # the labels of the dendrogram are pulled from the Expression set exprs column names, it's nice to rename them to something more intelligible if you haven't already, as well as match them up to the metadata for label coloring
   ## check to see if the column names of the expression set match anything in the metadata, or match the rownames
   if (identical(colnames(exprs(x)), row.names(meta.x))) {
-    meta.x <- rownames2col(meta.x, "rownames")
+    meta.x <- row2colnames(meta.x, "rownames")
     matchcol <- "rownames"
   } else if (any(apply(meta.x, 2, function(column) identical(as.character(unlist(column)), colnames(exprs(x)))))) {
     matchcol <- names(which(apply(meta.x, 2, function(column) identical(as.character(unlist(column)), colnames(exprs(x))))))

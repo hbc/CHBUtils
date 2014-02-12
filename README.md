@@ -1,6 +1,6 @@
 CHBUtils
 =========
-[![Build Status](https://secure.travis-ci.org/hbc/CHBUtils.png)](http://travis-ci.org/hbc/CHBUtils)
+[![Build Status](https://api.travis-ci.org/hbc/CHBUtils.png)](http://travis-ci.org/hbc/CHBUtils)
 
 Utility functions in R
 

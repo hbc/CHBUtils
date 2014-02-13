@@ -1,5 +1,5 @@
 create_report<-function(path,samples,out,title,condition){
-  
+  require(Nozzle.R1)
   report<-""
   report <- newCustomReport( title );
   

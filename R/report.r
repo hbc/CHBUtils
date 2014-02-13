@@ -1,5 +1,6 @@
 i_create_fastqc_figure<-function(path,samples,out){
-  
+  require(ggplot2)
+  require(Nozzle.R1)
   ############QUALITY PER NT###############
   tfqc<-data.frame()
   for (f in samples){
@@ -42,8 +43,11 @@ i_create_fastqc_figure<-function(path,samples,out){
 }
 
 i_create_rnaseqc_figure<-function(path,samples,out){
+  require(ggplot2)
+  require(Nozzle.R1)
   
   ############COVERAGE###############
+  
   trqccov<-data.frame()
   for (f in samples){
     print (f)
@@ -99,6 +103,9 @@ i_create_rnaseqc_figure<-function(path,samples,out){
 }
 
 i_create_gene_coverage<-function(path,samples,out){
+  require(ggplot2)
+  require(Nozzle.R1)
+  
   ############COVERAGE###############
   trqccov<-data.frame()
   for (f in samples){
@@ -154,6 +161,8 @@ i_create_gene_coverage<-function(path,samples,out){
 }
 
 i_create_count_top<-function(path,ssamples,out){
+  require(Nozzle.R1)
+  
   mainfolder<-dir(path,pattern="project")
   ############COUNTS###############
   counts<-read.table(paste(sep="",path,mainfolder,"/annotated_combined.counts"),header=T,sep="\t")
@@ -172,6 +181,10 @@ i_create_count_top<-function(path,ssamples,out){
 }
 
 i_create_distribution_counts<-function(path,samples,out,condition){
+  require(ggplot2)
+  require(Nozzle.R1)
+  require(reshape)
+  require(DESeq2)
   
   mainfolder<-dir(path,pattern="project")
   
@@ -259,6 +272,8 @@ i_create_distribution_counts<-function(path,samples,out,condition){
 }
 
 i_create_mapping_stats<-function(path,samples,out){
+  require(Nozzle.R1)
+  
   ############ALIGNED#################
   trqc<-data.frame()
   for (f in samples){

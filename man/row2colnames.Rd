@@ -1,0 +1,22 @@
+\name{row2colnames}
+\alias{row2colnames}
+\title{add a column to a dataframe consisting of the current rownames}
+\usage{
+row2colnames(df, colname)
+}
+\arguments{
+  \item{df}{dataframe}
+
+  \item{colname}{character vector specifying new column id}
+}
+\value{
+dataframe with rownames as a column
+}
+\description{
+add a column to a dataframe consisting of the current
+rownames
+}
+\examples{
+rownamess2col(dataframe, "newcolumnid")
+}
+

@@ -5,7 +5,10 @@ i_create_fastqc_figure<-function(path,samples,out){
   tfqc<-data.frame()
   for (f in samples){
     src<-paste(path,f,"/qc/fastqc/fastqc_data.txt",sep="")
-    fqc<-suppressMessages(read.table(src,nrows=50,skip=12,sep="\t"))
+    endnt<-system(paste("grep -n END ",src," | head -2 | tail -1| sed 's/:/\t/' | cut -f 1"),
+                  intern = TRUE)
+    endnt<-as.integer(endnt)
+    fqc<-suppressMessages(read.table(src,nrows=endnt-14,skip=12,sep="\t"))
     names(fqc)<-c("nt","mean","median","lowQ","upQ","10Q","90Q")
     fqc$sample<-substr(f,1,21)
     tfqc<-rbind(tfqc,fqc)

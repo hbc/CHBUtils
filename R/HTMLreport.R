@@ -1,16 +1,16 @@
 
 #' Create report of QC
 #'
-#' @param path - absolute to bcbio results (in yaml file after -upload)
+#' @param path - absolute path to bcbio results (in yaml file after -upload)
 #' @param samples - vector indicating the name as samples are in the previous folder
 #' @param out path - where you want to create the index.html
-#' @param title this - value would be the title of the document
+#' @param title - this value would be the title of the document
 #' @param condition - a vector indicating the groups of the samples
 #' @export
 #' @examples
 #' p<-"absolute paht to bcbio results in yaml file: -upload
 #' s<-c("name1","name2","name3","name4")
-#' o<-"path where html will be created"
+#' o<-"/path/where/html/will/be/created"
 #' t<-"some title for the report"
 #' con<-c("TREAT","TREAT","CON","CON")
 #' r<-create_report(p,s,o,t,con)
@@ -52,13 +52,13 @@ create_report<-function(path,samples,out,title,condition){
 
 #' Write report of QC
 #'
-#' @param report - an object comming form create_report()
+#' @param report - an object comming from create_report()
 #' @param out - path where you want to create the index.html (same as used in create_report)
 #' @export
 #' @examples
-#' p<-"absolute paht to bcbio results in yaml file: -upload
+#' p<-"absolute path to bcbio results in yaml file: -upload
 #' s<-c("name1","name2","name3","name4")
-#' o<-"path where html will be created"
+#' o<-"/path/where/html/will/be/created"
 #' t<-"some title for the report"
 #' con<-c("TREAT","TREAT","CON","CON")
 #' r<-write_report(p,s,o,t,con)

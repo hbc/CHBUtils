@@ -1,3 +1,12 @@
+#' Plot MDS
+#'
+#' @param counts  matrix
+#' @param condition  vector indicating the group of each sample
+#' @param k  number of dimension
+#' @param d distance method (euclidian, cor)
+#' @param xi PC for x-axis (1 to k)
+#' @param yi PC for y-axis (1 to k)
+#' @export
 mds = function(counts, condition,k=6,d="euclidian",xi=1,yi=2) {
     require(ggplot2)
     nprobes = nrow(counts)
@@ -22,6 +31,12 @@ mds = function(counts, condition,k=6,d="euclidian",xi=1,yi=2) {
     return(p)
 }
 
+#' Plot PC importance
+#'
+#' @param counts  matrix
+#' @param k  number of dimension
+#' @param d distance method (euclidian, cor)
+#' @export
 variance_by_component = function(counts,k=6,d="euclidian") {
     nsamples = ncol(counts)
     if (d=="euclidian"){

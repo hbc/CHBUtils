@@ -1,0 +1,23 @@
+\name{ggplotDispEsts}
+\alias{ggplotDispEsts}
+\title{Plot Dispersion Estimates - nicer ggplot version of DESeq graph}
+\usage{
+ggplotDispEsts(cds)
+}
+\arguments{
+  \item{cds}{CountDataSet, required}
+}
+\value{
+plot
+}
+\description{
+Plot Dispersion Estimates - nicer ggplot version of DESeq
+graph
+}
+\examples{
+ggplotDispEsts(cds)
+}
+\seealso{
+\code{\link{DESeq}} for description of the Dispersion plots
+}
+

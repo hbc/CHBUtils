@@ -9,7 +9,6 @@
 #' @examples
 #' plotDE(df, basemean_colid="baseMean",log2foldchange_colid=log2FoldChange, adj_pval_colid="padj", adj_pval_cutoff=0.05)
 
-
 plotDE = function(pvaldf,  basemean_colid=NULL, log2foldchange_colid=NULL, adj_pval_colid=NULL, adj_pval_cutoff=0.05)  {
   title = paste("M-A plot of", sep = " - ")
   pvaldf$colors <- ifelse(pvaldf[,adj_pval_colid] < cutoffpval, "sig", "nonsig")

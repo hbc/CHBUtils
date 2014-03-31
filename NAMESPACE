@@ -1,3 +1,4 @@
+export(plotDE)
 export(qqplot_JH)
 export(PCAplot.cds)
 export(PCAplot.eset)

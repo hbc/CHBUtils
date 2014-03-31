@@ -11,12 +11,12 @@
 
 plotDE = function(pvaldf,  basemean_colid=NULL, log2foldchange_colid=NULL, adj_pval_colid=NULL, adj_pval_cutoff=0.05)  {
   title = paste("M-A plot of", sep = " - ")
-  pvaldf$colors <- ifelse(pvaldf[,adj_pval_colid] < cutoffpval, "sig", "nonsig")
+  pvaldf$colors <- ifelse(pvaldf[,adj_pval_colid] < adj_pval_cutoff, "sig", "nonsig")
   pvaldf$bm <- pvaldf[,basemean_colid]
   pvaldf$lfc <- pvaldf[,log2foldchange_colid]
   plot <- ggplot(data = pvaldf, aes(x = log(bm), y = lfc, colour = colors)) + 
     geom_point(size = 3)  + 
-    scale_colour_manual(name = "BFH adjusted pvalue", values = c("#00000033", "#FF0000FF"), labels = c(paste("q>", cutoffpval, sep = ""), paste("q<", cutoffpval, sep = ""))) + 
+    scale_colour_manual(name = "BFH adjusted pvalue", values = c("#00000033", "#FF0000FF"), labels = c(paste("q>", adj_pval_cutoff, sep = ""), paste("q<", adj_pval_cutoff, sep = ""))) + 
     labs(title = "MA plot")
   plot
 }

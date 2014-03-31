@@ -1,5 +1,4 @@
-#' Plots the pvalue quantiles against the uniform distribution
-#' if adjusted pvalues are present, colors those that pass cutoff red 
+#' Plots the pvalue quantiles against the uniform distribution. If adjusted pvalues are present, colors those that pass cutoff red 
 #' @param pvaldf dataframe, required
 #' @param pval_colid character string, column header of column containing unadjusted pvalues, required
 #' @param adj_pval_colid character string, column header of column containing adjusted pvalues, required
@@ -7,7 +6,6 @@
 #' @export
 #' @examples
 #' qqplot_JH(df, pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05)
-
 
 qqplot_JH = function(pvaldf,  pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05) {
   require(ggplot2)

@@ -4,7 +4,7 @@
 If adjusted pvalues are present, colors those that pass cutoff red}
 \usage{
 plotDE(pvaldf, basemean_colid = NULL, log2foldchange_colid = NULL,
-  adj_pval_colid = NULL, adj_pval_cutoff = 0.05)
+  adj_pval_colid = NULL, adj_pval_cutoff = 0.05, title = "MA plot")
 }
 \arguments{
   \item{pvaldf}{dataframe, required}
@@ -20,6 +20,9 @@ plotDE(pvaldf, basemean_colid = NULL, log2foldchange_colid = NULL,
   column containing adjusted pvalues, required}
 
   \item{adj_pval_cutoff,}{optional, defaults to 0.05}
+
+  \item{title}{character string, title for the plot,
+  optional, defaults to "MA plot"}
 }
 \description{
 Plots the differntially expressed genes on an MA plot,
@@ -27,6 +30,6 @@ ggplot style If adjusted pvalues are present, colors those
 that pass cutoff red
 }
 \examples{
-plotDE(df, basemean_colid="baseMean",log2foldchange_colid=log2FoldChange, adj_pval_colid="padj", adj_pval_cutoff=0.05)
+plotDE(df, basemean_colid="baseMean",log2foldchange_colid=log2FoldChange, adj_pval_colid="padj", adj_pval_cutoff=0.05, title="My MA plot")
 }
 

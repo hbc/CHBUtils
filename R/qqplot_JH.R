@@ -3,13 +3,14 @@
 #' @param pval_colid character string, column header of column containing unadjusted pvalues, required
 #' @param adj_pval_colid character string, column header of column containing adjusted pvalues, required
 #' @param adj_pval_cutoff, optional, defaults to 0.05
+#' @param title, optional, defaults to "Quantile-quantile plot of p-values against Uniform distribution"
 #' @export
 #' @examples
-#' qqplot_JH(df, pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05)
+#' qqplot_JH(df, pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05, title="My qqplot")
 
-qqplot_JH = function(pvaldf,  pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05) {
+qqplot_JH = function(pvaldf,  pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05, title="Quantile-quantile plot of p-values against Uniform distribution") {
   require(ggplot2)
-  title="Quantile-quantile plot of p-values against Uniform distribution"
+  title=title
   pvaldf <- pvaldf[order(pvaldf[,pval_colid], decreasing=F),]
   pvals <- as.vector(unlist(pvaldf[, pval_colid]))
   o <- -log10(pvals)

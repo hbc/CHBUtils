@@ -3,7 +3,8 @@
 \title{Plots the pvalue quantiles against the uniform distribution. If adjusted pvalues are present, colors those that pass cutoff red}
 \usage{
 qqplot_JH(pvaldf, pval_colid = "pval", adj_pval_colid = "padj",
-  adj_pval_cutoff = 0.05)
+  adj_pval_cutoff = 0.05,
+  title = "Quantile-quantile plot of p-values against Uniform distribution")
 }
 \arguments{
   \item{pvaldf}{dataframe, required}
@@ -15,6 +16,9 @@ qqplot_JH(pvaldf, pval_colid = "pval", adj_pval_colid = "padj",
   column containing adjusted pvalues, required}
 
   \item{adj_pval_cutoff,}{optional, defaults to 0.05}
+
+  \item{title,}{optional, defaults to "Quantile-quantile
+  plot of p-values against Uniform distribution"}
 }
 \description{
 Plots the pvalue quantiles against the uniform
@@ -22,6 +26,6 @@ distribution. If adjusted pvalues are present, colors those
 that pass cutoff red
 }
 \examples{
-qqplot_JH(df, pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05)
+qqplot_JH(df, pval_colid="pval", adj_pval_colid="padj", adj_pval_cutoff=0.05, title="My qqplot")
 }
 

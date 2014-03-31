@@ -33,7 +33,7 @@ PCAplot.cds <- function(countdataset=NULL, categories=NULL, secondary_categories
   alpha <- sprintf("%x", ceiling(alpha*255))
   colorpalette <- paste(colorpalette, alpha, sep="")
   colors <- colorpalette[factor(as.character(unlist(pd[,categories])))]
-  # setup secondary categories as shape variable if present
+  o# setup secondary categories as shape variable if present
   if (missing(secondary_categories)){
     shapes=21
   } else {
@@ -55,7 +55,7 @@ PCAplot.cds <- function(countdataset=NULL, categories=NULL, secondary_categories
   myPca.core <- prcomp(t(df))
   tmpPCAData.core <- as.data.frame(myPca.core$x[,1:numcomponents])
   # plot the result
-  legend_values=unique(cbind(colors, as.character(pd[,categories])))
-  pairs(tmpPCAData.core, bg=colors, col="#606060", cex=2, pch=21, main=title, oma=c(8,5,5,14))
-  legend("right", cex=0.7, col="#606060", pt.bg=legend_values[,1], pt.cex=1.5, legend=legend_values[,2],  pch=21, bty="n", x.intersp=1)
+  #legend_values=unique(cbind(colors, as.character(pd[,categories])))
+  pairs(tmpPCAData.core, bg=colors, col="#606060", cex=2, pch=shapes, main=title, oma=c(8,5,5,14))
+  legend("right", cex=0.7, col="#606060", pt.bg=legend_values[,2], pt.cex=1.5, legend=legend_values[,3],  pch=as.numeric(legend_values[,1]), bty="n", x.intersp=1)
 }

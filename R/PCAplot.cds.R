@@ -33,7 +33,7 @@ PCAplot.cds <- function(countdataset=NULL, categories=NULL, secondary_categories
   alpha <- sprintf("%x", ceiling(alpha*255))
   colorpalette <- paste(colorpalette, alpha, sep="")
   colors <- colorpalette[factor(as.character(unlist(pd[,categories])))]
-  o# setup secondary categories as shape variable if present
+  # setup secondary categories as shape variable if present
   if (missing(secondary_categories)){
     shapes=21
   } else {

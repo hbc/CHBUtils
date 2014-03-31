@@ -4,7 +4,7 @@
 If adjusted pvalues are present, colors those that pass cutoff red}
 \usage{
 plotDE(pvaldf, basemean_colid = NULL, log2foldchange_colid = NULL,
-  adj_pval_colid = NULL, adj_pval_cutoff = 0.05, title = "MA plot")
+  adj_pval_colid = NULL, adj_pval_cutoff = 0.05, plottitle = "MA plot")
 }
 \arguments{
   \item{pvaldf}{dataframe, required}
@@ -21,7 +21,7 @@ plotDE(pvaldf, basemean_colid = NULL, log2foldchange_colid = NULL,
 
   \item{adj_pval_cutoff,}{optional, defaults to 0.05}
 
-  \item{title}{character string, title for the plot,
+  \item{plottitle}{character string, title for the plot,
   optional, defaults to "MA plot"}
 }
 \description{
@@ -30,6 +30,6 @@ ggplot style If adjusted pvalues are present, colors those
 that pass cutoff red
 }
 \examples{
-plotDE(df, basemean_colid="baseMean",log2foldchange_colid=log2FoldChange, adj_pval_colid="padj", adj_pval_cutoff=0.05, title="My MA plot")
+plotDE(df, basemean_colid="baseMean",log2foldchange_colid=log2FoldChange, adj_pval_colid="padj", adj_pval_cutoff=0.05, plottitle="My MA plot")
 }
 

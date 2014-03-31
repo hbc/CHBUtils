@@ -18,6 +18,6 @@ plotDE = function(pvaldf,  basemean_colid=NULL, log2foldchange_colid=NULL, adj_p
   plot <- ggplot(data = pvaldf, aes(x = log(bm), y = lfc, colour = colors)) + 
     geom_point(size = 3)  + 
     scale_colour_manual(name = "BFH adjusted pvalue", values = c("#00000033", "#FF0000FF"), labels = c(paste("q>", cutoffpval, sep = ""), paste("q<", cutoffpval, sep = ""))) + 
-    labs(title = title)
+    labs(title = "MA plot")
   plot
 }

@@ -36,6 +36,7 @@ mdsplot.RGset <- function (dat, numPositions = 1000, sampGroups, sampNames, main
   fit <- cbind(fit, pd)
   # generate color factors for ggplot
   fit$col <- fit[,sampGroups]
+  fit$col <- as.character(fit$col)
   # factor colors in palette by sampGroups
   if (missing(sampNames)) {
     ggplot(fit, aes(x=x, y=y, color=col))+

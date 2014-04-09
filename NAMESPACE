@@ -1,3 +1,4 @@
+export(mdsplot.RGset)
 export(plotDE)
 export(qqplot_JH)
 export(PCAplot.cds)

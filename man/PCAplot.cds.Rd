@@ -2,8 +2,8 @@
 \alias{PCAplot.cds}
 \title{Pairwise Principal Component Analysis Plots of CountDataSet objects}
 \usage{
-PCAplot.cds(countdataset, categories, title, colorpalette, alpha = 1,
-  numcomponents = 4, normalize.counts = TRUE)
+PCAplot.cds(countdataset, categories, categories2, title, colorpalette,
+  alpha = 1, numcomponents = 4, normalize.counts = TRUE)
 }
 \arguments{
   \item{countdataset}{CountDataSet, required}
@@ -11,6 +11,10 @@ PCAplot.cds(countdataset, categories, title, colorpalette, alpha = 1,
   \item{categories}{character string, column header of
   column containing different categories to highlight with
   colors, required}
+
+  \item{categories2}{character string, column header of
+  column containing different categories to highlight with
+  shapes, optional}
 
   \item{title}{character string, title for the plot,
   required}

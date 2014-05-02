@@ -100,7 +100,7 @@ upViewport(0)
 ggheatmap <- function(x,
                       hm.colours= rev(c("#ffffcc", "#ffeda0", "#fed976",
                         "#feb24c", "#fd8d3c", "#fc4e2a", "#e31a1c",
-                        "#bd0026", "#800026")) {
+                        "#bd0026", "#800026"))) {
   require(ggdendro)
   require(ggplot2)
   require(reshape)

@@ -26,9 +26,10 @@ mds = function(counts, condition=NA,k=6,d="euclidian",xi=1,yi=2) {
     df$label = rownames(df)
     if(!is.na(condition)) { 
         df$condition = condition
-        p = ggplot(df, aes(one, two, color=condition)) +
-            geom_point()+
-          labs(list(x=xnames[xi],y=xnames[yi]))
+        p = ggplot(df, aes(one, two, label=label, color=condition)) +
+            geom_text(aes(one, two, label=label), size=3) +
+            labs(list(x=xnames[xi],y=xnames[yi])) +
+            scale_x_continuous(expand=c(0.3, 0.3))
     }
     else {
         p = ggplot(df, aes(one, two)) +

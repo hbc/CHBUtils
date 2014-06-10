@@ -8,9 +8,11 @@ getTFpairs(listgenes, filesqlite, upstream = 10000, downstream = 0)
 \arguments{
 \item{listgene}{vector with ensembl ID genes}
 
-\item{upstream}{limit distance of the TF to the TSS.}
+\item{upstream}{limit distance of the TF to the TSS
+(upstream to the TSS).}
 
-\item{downstream}{limit distance of the TF to the TSS.}
+\item{downstream}{limit distance of the TF to the TSS
+(downstream to the TSS).}
 
 \item{filesqlite}{sqlite file containgin the DB.}
 }

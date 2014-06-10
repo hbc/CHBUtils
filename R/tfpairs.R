@@ -13,24 +13,28 @@ getTFpairs<-function(listgenes,
                      upstream=10000,
                      downstream=0)
 {
-  require(RSQLite)
-  sqlite    <- dbDriver("SQLite")
-  db <- dbConnect(sqlite,filesqlite)
-  gettf<-lapply(listgenes,function(x){
-    xi<-as.numeric(gsub("^0{1,}","",sub("ENSMUSG","",x)))
-    #print(x)
-    tf <- dbGetQuery(db, 
-      paste0("select tf from mousetfpairs where dist > ",
-             downstream," and dist < ",upstream,
-             " and gene = ",xi,";"))
-    if (nrow(tf)>0){
-      #data.frame(gene=x,tf=intersect(tf[,1],row.names(mrlog)))
-      data.frame(gene=x,tf=tf[,1])
-    }else{
-      return(NULL)
-    }
-  })
-  tfpairs<-do.call(rbind,gettf)
-  tfpairs[!duplicated(tfpairs),]
-  
+  if ( length(grep("ENSMUSG",listgenes))==0){
+    print("your ids are not ensembl ids.")
+  }{
+    require(RSQLite)
+    sqlite    <- dbDriver("SQLite")
+    db <- dbConnect(sqlite,filesqlite)
+    gettf<-lapply(listgenes,function(x){
+      
+      xi<-as.numeric(gsub("^0{1,}","",sub("ENSMUSG","",x)))
+      #print(x)
+      tf <- dbGetQuery(db, 
+                       paste0("select tf from mousetfpairs where dist > ",
+                              downstream," and dist < ",upstream,
+                              " and gene = ",xi,";"))
+      if (nrow(tf)>0){
+        #data.frame(gene=x,tf=intersect(tf[,1],row.names(mrlog)))
+        data.frame(gene=x,tf=tf[,1])
+      }else{
+        return(NULL)
+      }
+    })
+    tfpairs<-do.call(rbind,gettf)
+    tfpairs[!duplicated(tfpairs),]
+  }
 }

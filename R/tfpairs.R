@@ -15,7 +15,7 @@ getTFpairs<-function(listgenes,
 {
   if ( length(grep("ENSMUSG",listgenes))==0){
     print("your ids are not ensembl ids.")
-  }{
+  }else{
     require(RSQLite)
     sqlite    <- dbDriver("SQLite")
     db <- dbConnect(sqlite,filesqlite)

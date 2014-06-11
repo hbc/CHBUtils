@@ -24,12 +24,12 @@ getTFpairs<-function(listgenes,
       xi<-as.numeric(gsub("^0{1,}","",sub("ENSMUSG","",x)))
       #print(x)
       tf <- dbGetQuery(db, 
-                       paste0("select tf from mousetfpairs where dist > ",
-                              downstream," and dist < ",upstream,
+                       paste0("select tf,score,con from mousetfpairs where dist > ",
+                              -1 * downstream," and dist < ",upstream,
                               " and gene = ",xi,";"))
       if (nrow(tf)>0){
         #data.frame(gene=x,tf=intersect(tf[,1],row.names(mrlog)))
-        data.frame(gene=x,tf=tf[,1])
+        data.frame(gene=x,tf=tf[,1],score=tf[,2],con=tf[,3])
       }else{
         return(NULL)
       }

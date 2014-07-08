@@ -117,7 +117,7 @@ ggheatmap <- function(x,
   if (class(row.hc)=="try-error"){
     row.hc <- try(hclust(dist(x), "ward"),silent=T)
   }
-  col.hc <- try(hclust(dist(t(x)), "ward.D"))
+  col.hc <- try(hclust(dist(t(x)), "ward.D"),silent=T)
   if (class(col.hc)=="try-error"){
     col.hc <- try(hclust(dist(t(x)), "ward"),silent=T)
   }

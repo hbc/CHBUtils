@@ -113,8 +113,15 @@ ggheatmap <- function(x,
     rownames(x) <- sprintf("row%s",1:nrow(x))
   ## plot a heatmap
   ## x is an expression matrix
-  row.hc <- hclust(dist(x), "ward.D")
-  col.hc <- hclust(dist(t(x)), "ward.D")
+  row.hc <- try(hclust(dist(x), "ward.D"),silent=T)
+  if (class(row.hc)=="try-error"){
+    row.hc <- try(hclust(dist(x), "ward"),silent=T)
+  }
+  col.hc <- try(hclust(dist(t(x)), "ward.D"))
+  if (class(col.hc)=="try-error"){
+    col.hc <- try(hclust(dist(t(x)), "ward"),silent=T)
+  }
+  
   row.dendro <- dendro_data(as.dendrogram(row.hc),type="rectangle")
   col.dendro <- dendro_data(as.dendrogram(col.hc),type="rectangle")
  

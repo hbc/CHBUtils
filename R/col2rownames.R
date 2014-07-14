@@ -6,7 +6,7 @@
 #' @return dataframe with column contents as rownames
 #' @export
 #' @examples
-#' rownamess2col(dataframe, "newcolumnid")
+#' col2rownames(dataframe, "columnid", FALSE)
 
 
 ####################################

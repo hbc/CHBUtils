@@ -19,6 +19,6 @@ dataframe with column contents as rownames
 add a column to a dataframe consisting of the current rownames
 }
 \examples{
-rownamess2col(dataframe, "newcolumnid")
+col2rownames(dataframe, "columnid", FALSE)
 }
 

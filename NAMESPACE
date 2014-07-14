@@ -17,7 +17,6 @@ export(rleoutliers)
 export(row2colnames)
 export(variance_by_component)
 export(write_report)
-<<<<<<< Updated upstream:NAMESPACE
 export(ggplotDispEsts)
 export(bcv)
 export(mds)
@@ -28,5 +27,3 @@ export(ggheatmap.show)
 export(g_legend)
 export(mydplot)
 export(getTFpairs)
-=======
->>>>>>> Stashed changes:NAMESPACE

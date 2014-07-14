@@ -7,7 +7,7 @@
 #' @param xi PC for x-axis (1 to k)
 #' @param yi PC for y-axis (1 to k)
 #' @export
-mds = function(counts, condition=NA,k=6,d="euclidian",xi=1,yi=2) {
+mds = function(counts, condition=NULL,k=6,d="euclidian",xi=1,yi=2) {
     require(ggplot2)
     nprobes = nrow(counts)
     nsamples = ncol(counts)
@@ -24,11 +24,12 @@ mds = function(counts, condition=NA,k=6,d="euclidian",xi=1,yi=2) {
     df = as.data.frame(fit$points[,c(xi,yi)])
     names(df) = c("one", "two")
     df$label = rownames(df)
-    if(!is.na(condition)) { 
+    if(!is.null(condition)) { 
         df$condition = condition
-        p = ggplot(df, aes(one, two, color=condition)) +
-            geom_point()+
-          labs(list(x=xnames[xi],y=xnames[yi]))
+        p = ggplot(df, aes(one, two, label=label, color=condition)) +
+            geom_text(aes(one, two, label=label), size=3) +
+            labs(list(x=xnames[xi],y=xnames[yi])) +
+            scale_x_continuous(expand=c(0.3, 0.3))
     }
     else {
         p = ggplot(df, aes(one, two)) +

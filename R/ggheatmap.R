@@ -98,15 +98,15 @@ upViewport(0)
 ##' ## display plot
 ##' ggheatmap.show(p)
 ggheatmap <- function(x,
-                      hm.colours= rev(c("#ffffcc", "#ffeda0", "#fed976",
+                      hm.colours= c("#ffffcc", "#ffeda0", "#fed976",
                         "#feb24c", "#fd8d3c", "#fc4e2a", "#e31a1c",
-                        "#bd0026", "#800026"))) {
+                        "#bd0026", "#800026")) {
   require(ggdendro)
   require(ggplot2)
   require(reshape)
   require(grid)
-  my.colours = rev(c("#ffffcc", "#ffeda0", "#fed976", "#feb24c", "#fd8d3c",
-    "#fc4e2a", "#e31a1c", "#bd0026", "#800026"))
+  #my.colours = rev(c("#ffffcc", "#ffeda0", "#fed976", "#feb24c", "#fd8d3c",
+  #  "#fc4e2a", "#e31a1c", "#bd0026", "#800026"))
   if(is.null(colnames(x)))
     colnames(x) <- sprintf("col%s",1:ncol(x))
   if(is.null(rownames(x)))
@@ -127,10 +127,10 @@ ggheatmap <- function(x,
  
   ## dendro plots
   col.plot <- mydplot(col.dendro, col=TRUE, labels=TRUE) +
-        scale_x_continuous(breaks = 1:ncol(x),labels=colnames(x)) +
+        scale_x_continuous(breaks = 1:ncol(x),labels=col.hc$labels[col.hc$order]) +
         theme(plot.margin = unit(c(0,0,0,0), "lines"))
   row.plot <- mydplot(row.dendro, row=TRUE, labels=TRUE) +
-        scale_x_continuous(breaks = 1:nrow(x),labels=rownames(x)) +
+        scale_x_continuous(breaks = 1:nrow(x),labels=row.hc$labels[row.hc$order]) +
         theme(plot.margin = unit(c(0,0,0,0), "lines"))
  
   ## order of the dendros

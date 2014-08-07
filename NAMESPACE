@@ -1,3 +1,4 @@
+export(qval_asymm)
 export(ggheatmap)
 export(mdsplot.RGset)
 export(plotDE)

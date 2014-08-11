@@ -11,6 +11,8 @@ Authors@R: c(person("Rory", "Kirchner", email="rory.kirchner@gmail.com",
     person("Brad", "Chapman", email="chapmanb@50mail.com",
     role = c("aut")),
     person("Meeta", "Mistry", email="meeta.mistry@gmail.com",
+    role = c("aut")),
+    person("Lorena", "Pantano", email="lorena.pantano@gmail.com",
     role = c("aut")))
 Depends:
     R (>= 3.0.0)

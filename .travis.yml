@@ -16,7 +16,7 @@ before_install:
   - "[ ! -d ${R_LIBS_USER} ] && mkdir ${R_LIBS_USER}"
   - R --version
   - R -e '.libPaths(); sessionInfo()'
-  - sudo R -e 'install.packages("devtools", repos="http://cran.us.r-project.org"); library(devtools); install_git("git://github.com/hbc/CHBUtils.git")
+  - sudo R -e 'install.packages("devtools", repos="http://cran.us.r-project.org"); library(devtools); install_git("git://github.com/hbc/CHBUtils.git")'
 
 language: c
 script: R -e 'library(CHBUtils)'

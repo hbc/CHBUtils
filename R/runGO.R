@@ -7,7 +7,7 @@
 #' \dontrun{
 #' library(org.Dr.eg.db)
 #' g<-read_entrez_id()
-#' set <- create_universe(org.Dr.egGO,"Denio reiro")
+#' set <- universeGO(org.Dr.egGO,"Denio reiro")
 #' }
 
 universeGO<-function(anno_db,organims)
@@ -37,14 +37,14 @@ universeGO<-function(anno_db,organims)
 #' @export
 #' @examples
 #' \dontrun{
-#' rwa <- go_enrichment(g.ezid,set,"MF",as.list(GOMFCHILDREN))
+#' rwa <- runGO(g.ezid,set,"MF",as.list(GOMFCHILDREN))
 #' }
 runGO<-function(g,set,type,gotree)
 {
   gsc <- set[[1]]
   universe <- set[[2]]
   go <- do_go(g,gsc,universe,type)
-  reduce(g,go,gotree)
+  list(reduce(g,go,gotree),go[[2]])
 }
 
 do_go <- function(g,gsc,universe,type)
@@ -59,9 +59,9 @@ do_go <- function(g,gsc,universe,type)
                                                 testDirection = "over"))
   
   Over <- hyperGTest(params)
-  x<-summary(Over)
-  x$fdr<-p.adjust(x$Pvalue, method="BH")
-  list(x,Over)
+  tab <- GOstats::summary(Over)
+  tab$fdr <- p.adjust(tab$Pvalue, method="BH")
+  list(tab,Over)
 }
 
 reduce <- function(g,go,childs)
@@ -70,7 +70,7 @@ reduce <- function(g,go,childs)
   f <- subset(go[[1]],fdr<0.1 & Count > 5 & OddsRatio > 1.5 )
   for (go_id in f[,1])
   {
-    if ( sum(unlist(childs[go_id]) %in% f[,1])==0){
+    if ( sum(unlist(childs[go_id]) %in% f[,1])<=1){
       info <- f[f[,1]==go_id,]
       genes_in<-go[[2]]@goDag@nodeData@data[go_id][[1]][1][[1]]
       gene_in_cit <- intersect(as.character(g),genes_in)
@@ -83,4 +83,28 @@ reduce <- function(g,go,childs)
     }
   }
   res
+}
+
+
+plotGO <- function(go, name, ext = 'png'){
+    suppressMessages(require(RamiGO))
+    t <- getAmigoTree (goIDs = go[[1]]$go, pvalues = go[[1]]$FDR,
+                             pcolors = c('white', 'magenta'),
+                             psplit = c(0.1, 0.05, 0.025, 0.01, 0.00025),
+                             filename = name, picType = ext,
+                             modeType = 'amigo', saveResult = TRUE)
+}
+
+#' Run basic GO enrichment of model organism
+#'
+#' @param go object from runGO
+#' @param gene character with string to match
+#' @return data.frame with matched terms
+#' @export
+#' @examples
+#' \dontrun{
+#' getGO(go,"hemato")
+#' }
+getGO <- function(go,gene){
+    go[[1]][grepl(gene,go[[1]]$term),]
 }

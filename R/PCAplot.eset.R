@@ -15,9 +15,10 @@
   
 
 PCAplot.eset <- function(eset=NULL, categories=NULL, secondary_categories=NULL, title=NULL, colorpalette=NULL, alpha=1, numcomponents=4){
-  if (missing(eset)){
+    if (missing(eset)){
     stop("Function requires an ExpressionSet")
   }
+  pd <- pData(eset)
   if(missing(categories)){
     stop("Function requires you to specify phenoData column name (as categories to highlight)")
   }
@@ -37,7 +38,7 @@ PCAplot.eset <- function(eset=NULL, categories=NULL, secondary_categories=NULL, 
   eset.core <- exprs(eset) 
   myPca.core <- prcomp(t(eset.core))
   tmpPCAData.core <- as.data.frame(myPca.core$x[,1:numcomponents])
-  pd <- pData(eset)
+  
   colors <- colorpalette[factor(as.character(unlist(pd[,categories])))]
   if(missing(secondary_categories)){
     legend_values <- unique(cbind(colors, as.character(pd[,categories])))

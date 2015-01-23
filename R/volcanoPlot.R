@@ -31,6 +31,7 @@ volcano_density_plot <- function(stats, side="both", title="Volcano Plot with Ma
     if ( any(stats[,2]>1) | any(stats[,2]<0) )
         stop("pvalues needs to be >0 and <1")
     names(stats) = c("logFC","adj.P.Val")
+    stats[,2] = stats[,2] + 1e-10
     # get range of log fold change and p-value values to setup plot borders
     range.lfc <- c(floor(min(stats$logFC)), ceiling(max(stats$logFC)))
     range.pval <- c(floor(min(-log10(stats$adj.P.Val))), ceiling(max(-log10(stats$adj.P.Val))))

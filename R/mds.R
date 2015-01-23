@@ -20,7 +20,7 @@ mds = function(counts, condition=NULL,k=6,d="euclidian",xi=1,yi=2) {
     #names = c("one", "two", "three", "four", "five", "six")
     #colnames(fit$points) = names[1:k]
     eigs = data.frame(variance_explained=fit$eig / sum(fit$eig))
-    xnames = paste0("PC",1:k," ",round(eigs[1:k,1],digits=2)*100,"%")
+    xnames = paste0("PC",1:k," ",round(eigs[1:k,1]*100,digits=2),"%")
     df = as.data.frame(fit$points[,c(xi,yi)])
     names(df) = c("one", "two")
     df$label = rownames(df)

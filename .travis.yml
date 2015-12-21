@@ -1,3 +1,5 @@
+sudo: required
+dist: trusty
 env:
   global:
     - R_LIBS_USER=~/R

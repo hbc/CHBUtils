@@ -93,8 +93,9 @@ volcano_density_plot <- function(stats, side="both", title="Volcano Plot with Ma
     pp.empty <- ggplotGrob(empty)
     pp.volc <- ggplotGrob(scatter)
     pp.pval  <- ggplotGrob(hist_right)
-    grid.arrange(top=textGrob(title),
+    p = grid.arrange(top=textGrob(title),
                  arrangeGrob(pp.logfc,pp.volc, heights=c(1,3),ncol=1),
                  arrangeGrob(pp.empty,pp.pval,  heights=c(1,3),ncol=1),
                  ncol=2, widths=c(3,1))
+    invisible(p)
 }

@@ -103,3 +103,16 @@ reduce_cp = function(genes, lim=100){
   return(TRUE)
 }
 
+#' Clean and print results from enrichGO
+#'
+#' @param ego result object from enrichGO
+#' @param limit integer limiting the number
+#' of genes in each category. Bigger names
+#' will give broad categories.
+print_enrichGO = function(ego, limit = 100){
+  require(knitr)
+  if (.isvalid(summary(ego))){
+    idx = reduce_cp(summary(ego)$geneID, limit)
+    return(kable(summary(ego)[idx, 1:7]))
+  }
+}

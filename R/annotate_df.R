@@ -111,8 +111,8 @@ reduce_cp = function(genes, lim=100){
 #' will give broad categories.
 print_enrichGO = function(ego, limit = 100){
   require(knitr)
-  if (.isvalid(summary(ego))){
-    idx = reduce_cp(summary(ego)$geneID, limit)
-    return(kable(summary(ego)[idx, 1:7]))
+  if (.isvalid(ego)){
+    idx = reduce_cp(ego$geneID, limit)
+    return(kable(ego[idx, 1:7]))
   }
 }

@@ -74,45 +74,4 @@ convertIDs <- function( ids, from, to, db, ifMultiple=c("putNA", "useFirst")) {
   return( selRes[ match( ids, selRes[,from] ), to ] )
 }
 
-# reduce clusterprofile output
-reduce_cp = function(genes, lim=100){
-  seen = c()
-  idx = sapply(genes, function(x){
-    if (x == "")
-      return(FALSE)
-    here = as.character(as.vector(unlist(strsplit(x, split = "/"))))
-    if (length(here) > lim)
-      return(FALSE)
-    c = intersect(seen, here)
-    seen <<- unique(c(seen, here))
-    score = 0.9 * length(here)
-    if (length(c) < score)
-      return(TRUE)
-    return(FALSE)
-  })
-  idx
-}
 
-.isvalid= function(dd){
-  if (is.null(dim(dd))){
-    return(FALSE)
-  }
-  if (nrow(dd)==0){
-    return(FALSE)
-  }
-  return(TRUE)
-}
-
-#' Clean and print results from enrichGO
-#'
-#' @param ego result object from enrichGO
-#' @param limit integer limiting the number
-#' of genes in each category. Bigger names
-#' will give broad categories.
-print_enrichGO = function(ego, limit = 100){
-  require(knitr)
-  if (.isvalid(ego)){
-    idx = reduce_cp(ego$geneID, limit)
-    return(kable(ego[idx, 1:7]))
-  }
-}

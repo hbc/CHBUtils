@@ -14,11 +14,13 @@ fmt <- function(){
 #' @param point.alpha transparency for points. Default 0.75
 #' @param point.outline.colour Default darkgray
 #' @param line.colour Defaul gray
+#' @param plot_text data.frame similar to stats table, with a third column
+#' being the text you want to add next to the point in the volcano plot. Default NULL
 #' @export
 volcano_density_plot <- function(stats, side="both", title="Volcano Plot with Marginal Distributions",
                                  pval.cutoff=0.05, lfc.cutoff=1, shade.colour="green",
                                  shade.alpha=0.25, point.colour="gray", point.alpha=0.75,
-                                 point.outline.colour="darkgray", line.colour="gray") {
+                                 point.outline.colour="darkgray", line.colour="gray", plot_text=NULL) {
     require(grid)
     require(gridExtra)
     require(ggplot2)
@@ -33,8 +35,8 @@ volcano_density_plot <- function(stats, side="both", title="Volcano Plot with Ma
     names(stats) = c("logFC","adj.P.Val")
     stats[,2] = stats[,2] + 1e-10
     # get range of log fold change and p-value values to setup plot borders
-    range.lfc <- c(floor(min(stats$logFC)), ceiling(max(stats$logFC)))
-    range.pval <- c(floor(min(-log10(stats$adj.P.Val))), ceiling(max(-log10(stats$adj.P.Val))))
+    range.lfc <- c(floor(min(stats$logFC))-1, ceiling(max(stats$logFC))+1)
+    range.pval <- c(floor(min(-log10(stats$adj.P.Val))), ceiling(max(-log10(stats$adj.P.Val)))+1)
 
     #make top plot - density plot with fold changes
     lfcd <- as.data.frame(cbind(density(stats$logFC)$x, density(stats$logFC)$y))
@@ -77,7 +79,15 @@ volcano_density_plot <- function(stats, side="both", title="Volcano Plot with Ma
         scatter = scatter + geom_polygon(data=scat.poly.up, aes(x=x,y=y), fill=shade.colour, alpha=shade.alpha)
     if (side=="both" | side=="down")
         scatter = scatter + geom_polygon(data=scat.poly.down, aes(x=x,y=y), fill=shade.colour, alpha=shade.alpha)
-
+    if (!is.null(plot_text)){
+        require(ggrepel)
+        names(plot_text) = c("logFC", "adj.P.Val", "name")
+        plot_text[,2] <- plot_text[,2] + 1e-10
+        scatter <- scatter + 
+            geom_text_repel(data=plot_text, aes(x=logFC, y=-log10(adj.P.Val), label=name), size=3)
+    }
+        
+        
     # make right plot - density plot of adjusted pvalues
     pvald <- as.data.frame(cbind(density(-log10(stats$adj.P.Val))$x, density(-log10(stats$adj.P.Val))$y))
     hist_right <- ggplot(data=stats, aes(x=-log10(adj.P.Val)))+

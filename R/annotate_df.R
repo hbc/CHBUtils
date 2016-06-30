@@ -14,9 +14,9 @@ annotate_df = function(df, df_ensemblid_header, biomart_ensembl_dataset, biomart
   require(biomaRt)
   ensembl = useMart('ENSEMBL_MART_ENSEMBL', dataset = biomart_ensembl_dataset, host="www.ensembl.org")
   annot.df = getBM(attributes=c(biomart_ensemblid_filter, biomart_genesymbol_attribute, "description"),
-            filters=c(biomart_ensemblid_filter), values=df[, df_ensemblid_header],
+            filters=c(biomart_ensemblid_filter), values=as.character(df[, df_ensemblid_header]),
             mart=ensembl)
-  m = merge(df, annot.df, by.x=df_ensemblid_header, by.y=biomart_ensemblid_filter)
+  m = merge(df, annot.df, by.x=df_ensemblid_header, by.y=biomart_ensemblid_filter, all.x=T)
   return(m)
 }
 

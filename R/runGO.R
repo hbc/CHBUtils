@@ -54,13 +54,16 @@ runGO = function(genes, org, from="SYMBOL", ont="BP", universe=NULL){
     require(clusterProfiler)
     require(AnnotationDbi)
     require(Rgraphviz)
-    stopifnot(class(universe)=="character")
+   
     stopifnot(class(genes)=="character")
     .accnum = convertIDs(genes, from, "ENTREZID", org, "useFirst")
     .accnumUNI = convertIDs(universe, from, "ENTREZID", org, "useFirst")
-    stopifnot(length(universe)>length(genes))
-    stopifnot(sum(!is.na(.accnum))>0)
-    stopifnot(sum(!is.na(.accnumUNI))>0)
+    if(!is.null(universe)){
+        stopifnot(class(universe)=="character")
+        stopifnot(length(universe)>length(genes))
+        stopifnot(sum(!is.na(.accnum))>0)
+        stopifnot(sum(!is.na(.accnumUNI))>0)
+    }
     ego <- enrichGO(gene = .accnum[!is.na(.accnum)], universe = .accnumUNI,
                     OrgDb = org, ont = ont, pAdjustMethod = "BH",
                     pvalueCutoff = 0.01, qvalueCutoff = 0.05, readable = TRUE)

@@ -12,7 +12,7 @@
 #' annotate_df(temp, "id", 'mmusculus_gene_ensembl', "ensembl_gene_id", "mgi_symbol")
 annotate_df = function(df, df_ensemblid_header, biomart_ensembl_dataset, biomart_ensemblid_filter, biomart_genesymbol_attribute) {
   require(biomaRt)
-  ensembl = useMart('ENSEMBL_MART_ENSEMBL', dataset = biomart_ensembl_dataset, host="www.ensembl.org")
+  ensembl = useMart('ENSEMBL_MART_ENSEMBL', dataset = biomart_ensembl_dataset, host="useast.ensembl.org")
   annot.df = getBM(attributes=c(biomart_ensemblid_filter, biomart_genesymbol_attribute, "description"),
             filters=c(biomart_ensemblid_filter), values=as.character(df[, df_ensemblid_header]),
             mart=ensembl)

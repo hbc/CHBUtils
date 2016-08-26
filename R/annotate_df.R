@@ -61,7 +61,7 @@ get_biomart = function(v, type="description", id="ensembl_gene_id",
 #' @examples
 #' convertIDs(list_genes, "ENSEMBLTRANS", "SYMBOL", org.Mm.eg.db, "useFirst")
 convertIDs <- function( ids, from, to, db, ifMultiple=c("putNA", "useFirst")) {
-  stopifnot( inherits( db, "AnnotationDb" ) )
+  # stopifnot( inherits( db, "AnnotationDb" ) )
   ifMultiple <- match.arg( ifMultiple )
   if (sum(ids %in% keys(db, from))==0)
     return(ids)
